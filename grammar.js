@@ -481,13 +481,29 @@ module.exports = grammar({
       ),
     _access_call: ($) => seq($.access, '.', $.method_call),
     _access_index: ($) => seq($.access, '[', alias($.expression, $.index), ']'),
+    // After `.`, names must match `identifier` OR reserved words that are also valid
+    // member names (e.g. enum fields like `Структура.RETURN`). Global `reserved` blocks
+    // keywords from `identifier`, so list those tokens explicitly here.
     _access_property: ($) =>
-      seq($.access, '.', alias($.identifier, $.property)),
+      seq(
+        $.access,
+        '.',
+        choice(
+          alias($.identifier, $.property),
+          alias($.RETURN_KEYWORD, $.property),
+        ),
+      ),
 
     method_call: ($) =>
       prec(
         PREC.CALL,
-        seq(field('name', $.identifier), field('arguments', $.arguments)),
+        seq(
+          field(
+            'name',
+            choice($.identifier, alias($.RETURN_KEYWORD, $.identifier)),
+          ),
+          field('arguments', $.arguments),
+        ),
       ),
 
     arguments: ($) => seq('(', sepBy(',', optional($.expression)), ')'),
