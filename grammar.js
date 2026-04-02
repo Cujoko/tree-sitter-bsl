@@ -187,7 +187,9 @@ module.exports = grammar({
 
   inline: ($) => [],
 
-  conflicts: ($) => [],
+  conflicts: ($) => [
+    [$.parenthesized_expression, $.arguments],
+  ],
 
   word: ($) => $.identifier,
 
@@ -295,7 +297,10 @@ module.exports = grammar({
       ),
 
     rise_error_statement: ($) =>
-      seq($.RAISE_KEYWORD, choice($.arguments, $.expression), optional(';')),
+      choice(
+        seq($.RAISE_KEYWORD, choice($.arguments, $.expression), optional(';')),
+        seq($.RAISE_KEYWORD, ';'),
+      ),
 
     var_statement: ($) =>
       seq(
@@ -328,6 +333,7 @@ module.exports = grammar({
         $.DO_KEYWORD,
         repeat($._statement),
         $.ENDDO_KEYWORD,
+        optional(';'),
       ),
 
     for_statement: ($) =>
@@ -361,10 +367,8 @@ module.exports = grammar({
 
     break_statement: ($) => seq($.BREAK_KEYWORD, optional(';')),
 
-    execute_statement: ($) => choice(
+    execute_statement: ($) =>
       seq(keyword('выполнить', 'execute'), $.expression, optional(';')),
-      seq(keyword('выполнить', 'execute'), '(', $.expression, ')', optional(';')),
-    ),
 
     goto_statement: ($) =>
       seq($.GOTO_KEYWORD, '~', $.identifier, optional(';')),
@@ -389,6 +393,7 @@ module.exports = grammar({
       choice(
         alias($._const_value, $.const_expression),
         $.identifier,
+        $.parenthesized_expression,
         $.unary_expression,
         $.binary_expression,
         $.ternary_expression,
@@ -399,6 +404,8 @@ module.exports = grammar({
         $.property_access,
         $.await_expression,
       ),
+
+    parenthesized_expression: ($) => seq('(', $.expression, ')'),
 
     unary_expression: ($) =>
       prec.left(
@@ -500,7 +507,11 @@ module.exports = grammar({
         seq(
           field(
             'name',
-            choice($.identifier, alias($.RETURN_KEYWORD, $.identifier)),
+            choice(
+              $.identifier,
+              alias($.RETURN_KEYWORD, $.identifier),
+              alias($.GOTO_KEYWORD, $.identifier),
+            ),
           ),
           field('arguments', $.arguments),
         ),

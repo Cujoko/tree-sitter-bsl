@@ -8,9 +8,11 @@
 (source_file
   (execute_statement
     (expression
-      (const_expression
-        (string
-          (string_content))))))
+      (parenthesized_expression
+        (expression
+          (const_expression
+            (string
+              (string_content))))))))
 
 ================
 Оператор выполнить

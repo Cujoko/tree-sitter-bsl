@@ -91,6 +91,7 @@
 А = Истина Или Ложь;
 А = А И Б;
 А = НЕ А;
+А = А И (Б Или НЕ В);
 ---
 
 (source_file
@@ -122,7 +123,26 @@
       (unary_expression
         operator: (operator)
         argument: (expression
-          (identifier))))))
+          (identifier)))))
+  (assignment_statement
+    left: (identifier)
+    right: (expression
+      (binary_expression
+        left: (expression
+          (identifier))
+        operator: (operator)
+        right: (expression
+          (parenthesized_expression
+            (expression
+              (binary_expression
+                left: (expression
+                  (identifier))
+                operator: (operator)
+                right: (expression
+                  (unary_expression
+                    operator: (operator)
+                    argument: (expression
+                      (identifier))))))))))))
 
 ================
 Сравнение
