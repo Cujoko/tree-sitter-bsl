@@ -1637,10 +1637,6 @@
                       "type": "SYMBOL",
                       "name": "expression"
                     }
-                  },
-                  {
-                    "type": "STRING",
-                    "value": ")"
                   }
                 ]
               },
@@ -1648,6 +1644,10 @@
                 "type": "BLANK"
               }
             ]
+          },
+          {
+            "type": "STRING",
+            "value": ")"
           }
         ]
       }
@@ -3414,7 +3414,7 @@
     },
     "identifier": {
       "type": "PATTERN",
-      "value": "[\\wа-я_][\\wа-я_0-9]*",
+      "value": "[\\wа-яё_][\\wа-яё_0-9]*",
       "flags": "i"
     },
     "line_comment": {

@@ -463,7 +463,13 @@ module.exports = grammar({
     new_expression_method: ($) =>
       prec.right(
         PREC.NEW,
-        seq($.NEW_KEYWORD, '(', field('type', $.expression), optional(seq(',', field('arguments', $.expression), ')')))),
+        seq(
+          $.NEW_KEYWORD,
+          '(',
+          field('type', $.expression),
+          optional(seq(',', field('arguments', $.expression))),
+          ')',
+        )),
 
     call_expression: ($) => prec(PREC.CALL - 1, $._access_call),
 
@@ -557,7 +563,7 @@ module.exports = grammar({
         ),
         '"',
       ),
-    identifier: ($) => /[\wа-я_][\wа-я_0-9]*/i,
+    identifier: ($) => /[\wа-яё_][\wа-яё_0-9]*/i,
 
     line_comment: ($) => seq('//', /.*/),
   },
