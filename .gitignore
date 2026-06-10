@@ -53,3 +53,7 @@ zig-out/
 *.tar.gz
 *.tgz
 *.zip
+
+pdm.lock
+.pdm.toml
+.pdm-python
