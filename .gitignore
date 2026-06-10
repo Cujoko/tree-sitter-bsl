@@ -1,32 +1,34 @@
+# Python local artifacts
 __pycache__/
-*.pyc
-*.pyo
-*.pyd
-build/
-dist/
+*.py[cod]
+.venv/
+venv/
+env/
+ENV/
+.python-version
+.pdm-python
+.pdm-build/
+pdm.lock
 *.egg-info/
-
-# Rust artifacts
-target/
+*.whl
+.pytest_cache/
+.ruff_cache/
 
 # Node artifacts
-build/
-prebuilds/
 node_modules/
+prebuilds/
 
-# Swift artifacts
-.build/
-
-# Go artifacts
-_obj/
-
-# Python artifacts
-.venv/
+# Build outputs
+build/
 dist/
-*.egg-info
-*.whl
+target/
+.build/
+_obj/
+.zig-cache/
+zig-cache/
+zig-out/
 
-# C artifacts
+# Native binaries and generated parser artifacts
 *.a
 *.so
 *.so.*
@@ -35,25 +37,16 @@ dist/
 *.pc
 *.exp
 *.lib
-
-# Zig artifacts
-.zig-cache/
-zig-cache/
-zig-out/
-
-# Example dirs
-/examples/*/
-
-# Grammar volatiles
 *.wasm
 *.obj
 *.o
 
-# Archives
+# Generated examples and archives
+/examples/*/
 *.tar.gz
 *.tgz
 *.zip
 
-pdm.lock
-.pdm.toml
-.pdm-python
+# OS files
+Thumbs.db
+.DS_Store
