@@ -5,7 +5,7 @@ build-backend = "setuptools.build_meta"
 [project]
 name = "tree-sitter-bsl"
 description = "1C (BSL) language"
-version = "0.1.7"
+dynamic = ["version"]
 keywords = ["incremental", "parsing", "tree-sitter", "bsl"]
 classifiers = [
   "Intended Audience :: Developers",
@@ -27,3 +27,9 @@ Homepage = "https://github.com/alkoleft/tree-sitter-bsl"
 [tool.cibuildwheel]
 build = "cp310-*"
 build-frontend = "build"
+
+[tool.setuptools.dynamic]
+version = {attr = "tree_sitter_bsl._version.__version__"}
+
+[tool.setuptools.package-dir]
+"" = "bindings/python"

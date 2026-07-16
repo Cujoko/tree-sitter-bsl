@@ -1,5 +1,6 @@
 import tree_sitter
 from ._binding import language
+from ._version import __version__
 
 
 def Language():
