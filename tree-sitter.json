@@ -6,16 +6,29 @@
       "camelcase": "BSL",
       "title": "BSL",
       "scope": "source.bsl",
+      "path": "grammars/bsl",
       "file-types": [
         "bsl",
         "osl"
       ],
       "injection-regex": "^bsl$",
       "class-name": "TreeSitterBsl"
+    },
+    {
+      "name": "sdbl",
+      "camelcase": "SDBL",
+      "title": "SDBL",
+      "scope": "source.sdbl",
+      "path": "grammars/sdbl",
+      "file-types": [
+        "sdbl"
+      ],
+      "injection-regex": "^sdbl$",
+      "class-name": "TreeSitterSdbl"
     }
   ],
   "metadata": {
-    "version": "0.1.6",
+    "version": "0.1.7",
     "license": "MIT",
     "description": "1C (BSL) language",
     "authors": [

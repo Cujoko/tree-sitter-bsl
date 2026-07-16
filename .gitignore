@@ -37,6 +37,8 @@ zig-out/
 *.pc
 *.exp
 *.lib
+
+# Grammar volatiles
 *.wasm
 *.obj
 *.o
@@ -45,6 +47,8 @@ zig-out/
 
 # Generated examples and archives
 /examples/*/
+!/examples/playground/
+!/examples/playground/**
 *.tar.gz
 *.tgz
 *.zip
@@ -56,3 +60,6 @@ zig-out/
 # OS files
 Thumbs.db
 .DS_Store
+
+# Local implementation prompts
+scripts/infr/

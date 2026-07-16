@@ -3,16 +3,16 @@ from platform import system
 from sysconfig import get_config_var
 
 from setuptools import Extension, find_packages, setup
+from setuptools.command.bdist_wheel import bdist_wheel
 from setuptools.command.build import build
-from setuptools.command.egg_info import egg_info
-from wheel.bdist_wheel import bdist_wheel
 
 sources = [
     "bindings/python/tree_sitter_bsl/binding.c",
-    "src/parser.c",
+    "grammars/bsl/src/parser.c",
+    "grammars/sdbl/src/parser.c",
 ]
-if path.exists("src/scanner.c"):
-    sources.append("src/scanner.c")
+if path.exists("grammars/bsl/src/scanner.c"):
+    sources.append("grammars/bsl/src/scanner.c")
 
 macros: list[tuple[str, str | None]] = [
     ("PY_SSIZE_T_CLEAN", None),
@@ -29,9 +29,10 @@ else:
 
 class Build(build):
     def run(self):
-        if path.isdir("queries"):
+        query_dir = "grammars/bsl/queries"
+        if path.isdir(query_dir):
             dest = path.join(self.build_lib, "tree_sitter_bsl", "queries")
-            self.copy_tree("queries", dest)
+            self.copy_tree(query_dir, dest)
         super().run()
 
 
@@ -41,13 +42,6 @@ class BdistWheel(bdist_wheel):
         if python.startswith("cp"):
             python, abi = "cp310", "abi3"
         return python, abi, platform
-
-
-class EggInfo(egg_info):
-    def find_sources(self):
-        super().find_sources()
-        self.filelist.recursive_include("queries", "*.scm")
-        self.filelist.include("src/tree_sitter/*.h")
 
 
 setup(
@@ -64,14 +58,13 @@ setup(
             sources=sources,
             extra_compile_args=cflags,
             define_macros=macros,
-            include_dirs=["src"],
+            include_dirs=["grammars/bsl/src", "grammars/sdbl/src"],
             py_limited_api=limited_api,
         )
     ],
     cmdclass={
         "build": Build,
         "bdist_wheel": BdistWheel,
-        "egg_info": EggInfo,
     },
     zip_safe=False
 )
