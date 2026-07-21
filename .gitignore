@@ -1,3 +1,8 @@
+# Secrets and local config
+.env
+.env.*
+!.env.sample
+
 # Python local artifacts
 __pycache__/
 *.py[cod]
@@ -63,3 +68,5 @@ Thumbs.db
 
 # Local implementation prompts
 scripts/infr/
+
+.notes
