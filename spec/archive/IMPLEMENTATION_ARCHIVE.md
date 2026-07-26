@@ -638,3 +638,19 @@ Archived result:
   upstream AST changes (`variable_spec` and `omitted_argument`), not malformed
   generated parser artifacts or a dropped fork grammar rule.
 - `npm run lint`, `npm run test:corpus`, and both Python binding tests passed.
+
+#### T18 - Restore nested bare rethrow parsing
+
+Status: done.
+
+Archived result:
+
+- Restored the fork behavior that accepts bare `ВызватьИсключение;` through the
+  ordinary `rise_error_statement` rule instead of only as a direct exception
+  branch child.
+- Added corpus coverage for a bare rethrow nested inside `Если` under
+  `Исключение`, matching real BSL modules consumed by `codemask-1c-core`.
+- Updated the standalone bare-raise contract so the parser no longer emits a
+  synthetic `MISSING identifier` node.
+- Regenerated BSL parser artifacts; `npm run lint` and `npm run test:corpus`
+  passed.

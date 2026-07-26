@@ -349,16 +349,14 @@ module.exports = grammar({
         optional(';'),
       )),
 
-    _exception_statement: ($) =>
-      choice(
-        alias($._rise_error_rethrow_statement, $.rise_error_statement),
-        $._statement,
-      ),
+    _exception_statement: ($) => $._statement,
 
     _rise_error_rethrow_statement: ($) => seq($.RAISE_KEYWORD, ';'),
 
-    rise_error_statement: ($) =>
+    rise_error_statement: ($) => choice(
+      $._rise_error_rethrow_statement,
       prec.right(seq($.RAISE_KEYWORD, choice(prec(1, $.arguments), $.expression), optional(';'))),
+    ),
 
     var_statement: ($) =>
       prec.right(seq(

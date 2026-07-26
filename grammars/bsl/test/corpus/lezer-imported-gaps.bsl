@@ -131,9 +131,39 @@ Lezer import: standalone bare raise
 
 (source_file
   (rise_error_statement
-    (RAISE_KEYWORD)
-    (expression
-      (MISSING identifier))))
+    (RAISE_KEYWORD)))
+
+=======================================================
+Lezer import: nested exception branch bare rethrow
+=======================================================
+Попытка
+    Действие();
+Исключение
+    Если Истина Тогда
+        ВызватьИсключение;
+    КонецЕсли;
+КонецПопытки
+---
+
+(source_file
+  (try_statement
+    (TRY_KEYWORD)
+    (call_statement
+      (method_call
+        name: (identifier)
+        arguments: (arguments)))
+    (EXCEPT_KEYWORD)
+    (if_statement
+      (IF_KEYWORD)
+      (expression
+        (const_expression
+          (boolean
+            (TRUE_KEYWORD))))
+      (THEN_KEYWORD)
+      (rise_error_statement
+        (RAISE_KEYWORD))
+      (ENDIF_KEYWORD))
+    (ENDTRY_KEYWORD)))
 
 ============================================
 Lezer import: raise with expression
