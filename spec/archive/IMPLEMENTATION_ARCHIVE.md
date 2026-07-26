@@ -620,3 +620,21 @@ Archived result:
 - Added `parse:bsl` and `parse:sdbl` scripts for quick parse-tree checks.
 - Updated README so standalone SDBL examples are not confused with BSL-string
   injection behavior.
+
+#### T17 - Audit fork/upstream grammar merge
+
+Status: done.
+
+Archived result:
+
+- Compared merge commit `01dae99` with both parents and reviewed every manual
+  BSL grammar conflict resolution.
+- Confirmed that the upstream argument-list rewrite made the fork's explicit
+  `parenthesized_expression` / `arguments` conflict obsolete; restoring it
+  produces an `unnecessary conflicts` generator warning.
+- Added focused corpus coverage combining fork parenthesized expressions with
+  upstream per-variable export and keyword member-access rules.
+- Confirmed that the downstream `codemask-1c-core` failures come from intentional
+  upstream AST changes (`variable_spec` and `omitted_argument`), not malformed
+  generated parser artifacts or a dropped fork grammar rule.
+- `npm run lint`, `npm run test:corpus`, and both Python binding tests passed.
