@@ -1,3 +1,7 @@
+/.artifacts/
+/.notes/
+/.temp/
+
 # Secrets and local config
 .env
 .env.*
@@ -68,5 +72,3 @@ Thumbs.db
 
 # Local implementation prompts
 scripts/infr/
-
-.notes
