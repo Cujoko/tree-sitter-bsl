@@ -23,8 +23,8 @@ readme = "README.md"
 core = ["tree-sitter~=0.24"]
 
 [project.urls]
-Homepage = "https://gitlab.com/Cujoko/tree-sitter-bsl"
-repository = "https://gitlab.com/Cujoko/tree-sitter-bsl"
+Homepage = "https://gitlab.com/cujoko/tree-sitter-bsl"
+repository = "https://gitlab.com/cujoko/tree-sitter-bsl"
 
 [tool.cibuildwheel]
 build = "cp310-*"
