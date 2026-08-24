@@ -9,6 +9,7 @@ dynamic = ["version"]
 keywords = ["incremental", "parsing", "tree-sitter", "bsl"]
 classifiers = [
   "Intended Audience :: Developers",
+  "Private :: Do Not Upload",
   "Topic :: Software Development :: Compilers",
   "Topic :: Text Processing :: Linguistic",
   "Typing :: Typed",
@@ -22,7 +23,8 @@ readme = "README.md"
 core = ["tree-sitter~=0.24"]
 
 [project.urls]
-Homepage = "https://github.com/alkoleft/tree-sitter-bsl"
+Homepage = "https://gitlab.com/Cujoko/tree-sitter-bsl"
+repository = "https://gitlab.com/Cujoko/tree-sitter-bsl"
 
 [tool.cibuildwheel]
 build = "cp310-*"

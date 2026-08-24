@@ -1,0 +1,7 @@
+include:
+  - project: cujoko/pypi
+    file: /templates/publish.yml
+
+publish:pypi:
+  variables:
+    CUJOKO_PYPI_NATIVE: "c"
