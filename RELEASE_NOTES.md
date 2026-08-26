@@ -1,3 +1,45 @@
+## v0.1.8
+
+### Packaging
+
+- Aligned the package version across every manifest, including the
+  self-version in `Cargo.lock` and `package-lock.json`, which had been left
+  behind by previous bumps. `Makefile` and `CMakeLists.txt` had drifted further
+  still, to 0.1.6, and are dropped entirely below.
+- Pointed package metadata at this fork: `pyproject.toml`, `package.json`,
+  `Cargo.toml`, `tree-sitter.json`, `Makefile` and `CMakeLists.txt` referenced
+  either the upstream repository or a non-existent `tree-sitter/tree-sitter-bsl`.
+- Renamed the Go module path to `github.com/cujoko/tree-sitter-bsl`. Breaking
+  for Go consumers, but the previous path never resolved to this project.
+- Removed the tag-triggered workflow that published to npm, crates.io and PyPI.
+  Those names belong to the upstream project, so the jobs could not have
+  succeeded.
+- Documented installation from the repository and dropped the badges and
+  playground link, which reported upstream's packages and grammar.
+- Removed the Zed dev extension (`editors/zed-bsl`), including its
+  `sdbl_embedded` carrier grammar. It pointed at the upstream author's local
+  checkout and is unused here; ADR-0002 keeps the record of the approach.
+- Dropped the unused binding scaffolding inherited from upstream: the Go, C,
+  Java and Kotlin bindings, `go.mod`, `Package.swift`, `Makefile` and
+  `CMakeLists.txt`. The package ships the Python, Rust and Node bindings, which
+  are the ones this project and its consumers build against. `tree-sitter.json`,
+  `.gitattributes`, `.editorconfig` and the GitHub CI matrix were updated to
+  match.
+
+### Packaged Query Files
+
+- The wheel now ships the SDBL highlight queries. Only `grammars/bsl/queries`
+  was copied into the package before, so `grammars/sdbl/queries/highlights.scm`
+  never reached consumers despite being documented as part of the package.
+- Query files moved from `tree_sitter_bsl/queries/` to
+  `tree_sitter_bsl/queries/<grammar>/`, because both grammars use the file name
+  `highlights.scm`. Breaking for anything reading the old path; nothing in this
+  workspace reads these files today.
+- `MANIFEST.in` and the `include` list in `Cargo.toml` were extended to cover
+  the SDBL queries as well.
+
+No parser or grammar changes.
+
 ## v0.1.7
 
 ### Parser
