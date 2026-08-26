@@ -167,9 +167,7 @@ print(tree.root_node.sexp())
 - Node.js: `require("tree-sitter-bsl").sdbl`;
 - Rust: `tree_sitter_bsl::SDBL_LANGUAGE`;
 - Python: `tree_sitter_bsl.SDBLLanguage()` или низкоуровневая капсула
-  `tree_sitter_bsl.sdbl_language()`;
-- Go: `tree_sitter_bsl.SDBLLanguage()`;
-- C: `tree_sitter_sdbl()` из `tree-sitter-bsl.h` и той же библиотеки.
+  `tree_sitter_bsl.sdbl_language()`.
 
 Существующие точки входа BSL остаются языком пакета по умолчанию.
 

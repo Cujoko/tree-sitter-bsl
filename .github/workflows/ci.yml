@@ -28,7 +28,6 @@ jobs:
           test-node: true
           node-version: "22"
           test-python: true
-          test-go: true
       - name: Parse examples
         uses: tree-sitter/parse-action@v4
         with:

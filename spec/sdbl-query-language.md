@@ -135,7 +135,7 @@ in `spec/sdbl-coverage-matrix.md`.
 
 ## Completed Integration Milestones
 
-- SDBL binding/package exposure exists for Node.js, Rust, Python, Go and C.
+- SDBL binding/package exposure exists for Node.js, Rust and Python.
 - Package query files ship BSL/SDBL highlight queries and BSL string injection
   metadata.
 - Static BSL string injection is implemented through tree-sitter query/editor

@@ -41,8 +41,8 @@
     }
   },
   "bindings": {
-    "c": true,
-    "go": true,
+    "c": false,
+    "go": false,
     "node": true,
     "python": true,
     "rust": true,
