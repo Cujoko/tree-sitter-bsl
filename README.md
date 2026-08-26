@@ -179,6 +179,11 @@ print(tree.root_node.sexp())
 - `grammars/sdbl/queries/highlights.scm` для подсветки самостоятельного SDBL и
   текста запросов, внедренного из BSL.
 
+В установленном Python-пакете они лежат в `tree_sitter_bsl/queries/<грамматика>/`:
+`queries/bsl/highlights.scm`, `queries/bsl/injections.scm`,
+`queries/sdbl/highlights.scm`. Раскладка по подкаталогам обязательна — имя
+`highlights.scm` занято обеими грамматиками.
+
 ## Ссылки
 
 - Грамматика основана на правилах [BSL Parser](https://github.com/1c-syntax/bsl-parser)

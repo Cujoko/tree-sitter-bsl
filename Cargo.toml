@@ -21,6 +21,7 @@ include = [
   "grammars/sdbl/src/*",
   "grammars/sdbl/src/tree_sitter/*",
   "grammars/bsl/queries/*",
+  "grammars/sdbl/queries/*",
   "tree-sitter.json",
   "LICENSE",
 ]

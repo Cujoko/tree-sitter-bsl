@@ -29,10 +29,13 @@ else:
 
 class Build(build):
     def run(self):
-        query_dir = "grammars/bsl/queries"
-        if path.isdir(query_dir):
-            dest = path.join(self.build_lib, "tree_sitter_bsl", "queries")
-            self.copy_tree(query_dir, dest)
+        for grammar in ("bsl", "sdbl"):
+            query_dir = path.join("grammars", grammar, "queries")
+            if path.isdir(query_dir):
+                dest = path.join(
+                    self.build_lib, "tree_sitter_bsl", "queries", grammar
+                )
+                self.copy_tree(query_dir, dest)
         super().run()
 
 
@@ -48,8 +51,7 @@ setup(
     packages=find_packages("bindings/python"),
     package_dir={"": "bindings/python"},
     package_data={
-        "tree_sitter_bsl": ["*.pyi", "py.typed"],
-        "tree_sitter_bsl.queries": ["*.scm"],
+        "tree_sitter_bsl": ["*.pyi", "py.typed", "queries/*/*.scm"],
     },
     ext_package="tree_sitter_bsl",
     ext_modules=[
