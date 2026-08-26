@@ -140,8 +140,9 @@ in `spec/sdbl-coverage-matrix.md`.
   metadata.
 - Static BSL string injection is implemented through tree-sitter query/editor
   composition, governed by ADR-0002. It does not change BSL node shapes.
-- The local Zed dev extension contains an `sdbl_embedded` carrier grammar for
-  raw injected BSL string content.
+- Raw injected BSL string content has no carrier grammar in this repository.
+  The `sdbl_embedded` carrier lived in the Zed dev extension, which was removed
+  in 0.1.8; ADR-0002 keeps the record of that approach.
 
 ## Corpus Rules
 
