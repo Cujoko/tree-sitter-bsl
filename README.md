@@ -1,14 +1,9 @@
 # tree-sitter-bsl
 
-[![CI][ci]](https://github.com/alkoleft/tree-sitter-bsl/actions/workflows/ci.yml)
-[![npm][npm]](https://www.npmjs.com/package/tree-sitter-bsl)
-[![crates.io][crates]](https://crates.io/crates/tree-sitter-bsl)
-[![PyPI][pypi]](https://pypi.org/project/tree-sitter-bsl/)
-
 Грамматика 1C BSL в формате [tree-sitter](https://github.com/tree-sitter/tree-sitter).
 Пакет также содержит отдельную грамматику `sdbl` для языка запросов 1C.
 
-[Попробовать](https://alkoleft.github.io/tree-sitter-bsl/)
+Локальный playground — `npm start`, см. [Локальная разработка](#локальная-разработка).
 
 ![playground](playground.png)
 
@@ -83,6 +78,10 @@ tree-sitter test -p grammars/sdbl
 
 ## Использование
 
+Пакет не публикуется в публичные npm, crates.io и PyPI: имена `tree-sitter-bsl`
+там заняты апстримом. Устанавливается из репозитория; C-расширение собирается
+из исходников, поэтому нужен компилятор C.
+
 ### Rust
 
 Добавьте зависимость в [`Cargo.toml`](Cargo.toml):
@@ -90,7 +89,7 @@ tree-sitter test -p grammars/sdbl
 ```toml
 [dependencies]
 tree-sitter = "0.25"
-tree-sitter-bsl = "0.1"
+tree-sitter-bsl = { git = "https://github.com/cujoko/tree-sitter-bsl" }
 ```
 
 ```rust
@@ -118,7 +117,7 @@ fn main() {
 Установите пакет:
 
 ```sh
-npm install tree-sitter-bsl tree-sitter
+npm install github:cujoko/tree-sitter-bsl tree-sitter
 ```
 
 ```js
@@ -143,7 +142,7 @@ console.log(tree.rootNode.toString());
 Установите пакет:
 
 ```sh
-pip install tree-sitter-bsl tree-sitter
+pip install "tree-sitter-bsl @ git+https://github.com/cujoko/tree-sitter-bsl" tree-sitter
 ```
 
 ```python
@@ -196,8 +195,3 @@ print(tree.root_node.sexp())
 - Архитектурные решения: [`docs/decisions`](docs/decisions)
 - Активный список parser-задач: [`spec/IMPLEMENTATION_TODO.md`](spec/IMPLEMENTATION_TODO.md)
 - Контракт грамматики SDBL: [`spec/sdbl-query-language.md`](spec/sdbl-query-language.md)
-
-[ci]: https://img.shields.io/github/actions/workflow/status/alkoleft/tree-sitter-bsl/ci.yml?logo=github&label=CI
-[npm]: https://img.shields.io/npm/v/tree-sitter-bsl?logo=npm
-[crates]: https://img.shields.io/crates/v/tree-sitter-bsl?logo=rust
-[pypi]: https://img.shields.io/pypi/v/tree-sitter-bsl?logo=python
