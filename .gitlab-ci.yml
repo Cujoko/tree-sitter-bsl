@@ -1,14 +1,7 @@
 include:
   - project: cujoko/pypi
-    file: /templates/publish.yml
-
-# Шаблон кладёт publish:pypi в стадию .post, рассчитывая, что в проекте есть
-# собственные джобы. Здесь их нет, а пайплайн, состоящий только из .post,
-# GitLab не запускает вовсе — поэтому джоба переносится в обычную стадию.
-stages:
-  - publish
+    file: /templates/publish-standalone.yml
 
 publish:pypi:
-  stage: publish
   variables:
     CUJOKO_PYPI_NATIVE: "c"
