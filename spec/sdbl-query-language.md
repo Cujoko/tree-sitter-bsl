@@ -12,7 +12,8 @@ implementation ledger remains `spec/IMPLEMENTATION_TODO.md`.
 
 Primary syntax source snapshot:
 
-`spec/sdbl-syntax/`
+`spec/sdbl-syntax/` (packed as `spec/sdbl-syntax.zip`; unpack with
+`tar -xf spec/sdbl-syntax.zip -C spec`)
 
 Snapshot origin:
 

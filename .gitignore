@@ -63,6 +63,11 @@ zig-out/
 *.tgz
 *.zip
 
+# Packed ITS snapshot: nested Russian paths exceed Windows MAX_PATH under
+# Cargo's git checkout (`~/.cargo/git/checkouts/...`). Unpack locally if needed.
+/spec/sdbl-syntax/
+!/spec/sdbl-syntax.zip
+
 # Test and tool caches
 .pytest_cache/
 .ruff_cache/

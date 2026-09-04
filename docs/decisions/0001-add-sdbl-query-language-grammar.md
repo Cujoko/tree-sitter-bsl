@@ -16,7 +16,7 @@ SDBL now both live under `grammars/<name>/`.
 repository also needs parser support for the 1C query language described by the
 vendored HBK query-language help snapshot:
 
-`spec/sdbl-syntax/`
+`spec/sdbl-syntax/` (packed as `spec/sdbl-syntax.zip`)
 
 The query language is not BSL syntax. Its top-level text is a query description
 with optional union, ordering, auto-ordering and totals sections, and the
@@ -161,7 +161,7 @@ Implemented.
 
 ## References
 
-- Local source snapshot: `spec/sdbl-syntax/`
+- Local source snapshot: `spec/sdbl-syntax.zip` (unpacks to `spec/sdbl-syntax/`)
 - Snapshot origin: `/home/alko/develop/open-source/v8-context-hbk/target/help/shquery-ru/работа-с-запросами/синтаксис-текста-запросов`
 - Tree-sitter CLI `tree-sitter.json` grammar configuration:
   https://tree-sitter.github.io/tree-sitter/cli/init.html

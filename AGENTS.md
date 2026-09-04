@@ -43,8 +43,8 @@ The repository owns grammar behavior and parser-facing contracts:
 - `grammars/sdbl/src/grammar.json`, `grammars/sdbl/src/node-types.json` and
   `grammars/sdbl/src/parser.c` as planned SDBL generated artifacts when SDBL
   grammar generation is part of the change.
-- `spec/sdbl-syntax/` as the vendored source snapshot for 1C query-language
-  syntax.
+- `spec/sdbl-syntax.zip` as the packed vendored source snapshot for 1C
+  query-language syntax. Unpack to `spec/sdbl-syntax/` when reading pages.
 - Node, Rust and Python bindings only as parser package integration surfaces.
 
 The repository does not own analyzer facts, diagnostics, metadata models, HBK
