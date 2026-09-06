@@ -155,6 +155,9 @@ The project root on a developer machine may contain **junction** directories
 - If the junction is absent, use the system temp directory (Python:
   `tempfile.mkdtemp()`, `tempfile.TemporaryDirectory()`; PowerShell: `$env:TEMP`,
   `[System.IO.Path]::GetTempPath()`).
+- Output of a transformation or build — obfuscation, parsing, conversion,
+  normalization — goes there too. Never write it into tracked test data or
+  fixtures.
 - Do not commit `.temp/` contents.
 
 ### `.notes/`
